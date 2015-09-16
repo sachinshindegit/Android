@@ -18,7 +18,7 @@
 
     <EditText
         android:layout_width="fill_parent"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:id="@+id/myNote"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
@@ -32,10 +32,9 @@
         android:layout_height="wrap_content"
         android:text="Take Photo"
         android:id="@+id/takephoto"
-        android:layout_above="@+id/saveButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="125dp" />
+        android:layout_alignTop="@+id/saveButton"
+        android:layout_alignRight="@+id/myNote"
+        android:layout_alignEnd="@+id/myNote" />
 
     <Button
         android:layout_width="wrap_content"
@@ -47,7 +46,14 @@
         android:layout_alignParentStart="true"
         />
 
-
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:id="@+id/noteImage"
+        android:layout_above="@+id/takephoto"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:background="#14f0ff" />
 
 
 </RelativeLayout>

@@ -21,7 +21,7 @@ import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
-
+    private ArrayList temp  = new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         for (MyNote note : notes) {
             String log = "Id: "+note.getId()+" ,Note: " + note.getNote() + " ,Path: " + note.getPath();
             // Writing notes to log
+            temp.add(note.getId());
             noteslist.add(note.getNote());
             Log.d("Note: ", log);
         }
@@ -70,15 +71,21 @@ public class MainActivity extends AppCompatActivity {
             TextView textView = (TextView)vg.findViewById(R.id.txt);
             //Toast.makeText(MainActivity.this, textView.getText().toString(), Toast.LENGTH_SHORT).show();
 
-            Intent intent = new Intent("mynotemaker.NoteInfo");
+           Intent intent = new Intent("mynotemaker.NoteInfo");
 
             Bundle extras = new Bundle();
             extras.putString("mynote", textView.getText().toString());
+            extras.putString("noteId", temp.get(position).toString());
             intent.putExtras(extras);
-            startActivity(intent);
+            startActivityForResult(intent, 1001);
+
+
 
         }
     }
+
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -101,6 +108,23 @@ public class MainActivity extends AppCompatActivity {
 
     public void openMyCam(MenuItem item) {
         Intent intent = new Intent("mynotemaker.addnote");
-        startActivity(intent);
+
+        startActivityForResult(intent, 1002);
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == NoteInfoActivity.DELETE_NOTE_RESULT_CODE){
+            finish();
+            startActivity(new Intent(this,MainActivity.class));
+
+        }
+        if(requestCode == 1002){
+            finish();
+            startActivity(new Intent(this,MainActivity.class));
+
+        }
     }
 }

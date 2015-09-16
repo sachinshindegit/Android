@@ -18,6 +18,10 @@ public class MyNote {
         this.path = path;
     }
 
+    public  MyNote(int id){
+        this.id = id;
+    }
+
     public  MyNote(int id,String note, String path){
         this.id = id;
         this.note = note;

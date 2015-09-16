@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="sachinshinde.mynotemaker" >
 
-    <uses-permissions android:name="android.media.CameraProfile" />
+    <uses-feature android:name="android.hardware.camera" android:required="true" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -23,16 +24,15 @@
             android:label="@string/title_activity_note_info" >
             <intent-filter>
                 <action android:name="mynotemaker.NoteInfo" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".CameraActivity"
             android:label="@string/title_activity_camera" >
             <intent-filter>
                 <action android:name="mynotemaker.mycam" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
